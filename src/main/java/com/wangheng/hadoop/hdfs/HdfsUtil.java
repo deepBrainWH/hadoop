@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class HdfsUtil {
-    public static void main(String[] args) throws IOException {
+    public static void main_t(String[] args) throws IOException {
         Configuration conf = new Configuration();
         FileSystem fs = FileSystem.get(conf);
         Path src = new Path("hdfs://localhost:9000/data/input/hadoop-3.0.0.tar.gz");
