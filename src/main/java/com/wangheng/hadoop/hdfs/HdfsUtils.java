@@ -86,7 +86,6 @@ public class HdfsUtils {
             String filename = status.getPath().getName();
             System.out.println((status.isDirectory()?"DIR":"file")+"\t"+filename);
         }
-
     }
 
     /**
@@ -101,7 +100,7 @@ public class HdfsUtils {
      * original download file from hdfs
      * hadoop源码分析
      */
-    public static void main(String[] args) throws IOException{
+    public static void main_(String[] args) throws IOException{
         Configuration conf = new Configuration();
         conf.set("fs.defaultFS", "hdfs://localhost:9000/");
         FileSystem fs = FileSystem.get(conf);
