@@ -15,7 +15,7 @@ public class FlowSumMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
             throws IOException, InterruptedException {
         //get one line data
         String line = value.toString();
-        String[] fields = StringUtils.split(line, "\t");
+        String[] fields = StringUtils.split(line, " ");
         String phoneNumber = fields[0];
         long upFlow = Long.parseLong(fields[1]);
         long downFlow = Long.parseLong(fields[2]);
