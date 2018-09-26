@@ -15,6 +15,7 @@ public class FlowSumRunner extends Configured implements Tool {
     @Override
     public int run(String[] args) throws Exception {
         Configuration conf = new Configuration();
+        conf.set("fs.defaultFS", "hdfs://localhost:9000/");
         Job job = Job.getInstance(conf);
         job.setJarByClass(FlowSumRunner.class);
         job.setMapperClass(FlowSumMapper.class);
