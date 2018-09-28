@@ -34,7 +34,7 @@ public class FlowSumRunner extends Configured implements Tool {
         return job.waitForCompletion(true)?0:1;
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main_(String[] args) throws Exception{
         int res = ToolRunner.run(new Configuration(),new FlowSumRunner(), args);
         System.exit(res);
     }
