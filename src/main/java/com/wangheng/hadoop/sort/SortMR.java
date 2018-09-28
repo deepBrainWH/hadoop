@@ -29,7 +29,7 @@ public class SortMR extends Configured implements Tool {
             String line = value.toString();
             String fields[] = StringUtils.split(line, " ");
             String phoneNB = fields[0];
-            System.out.println("key = [" + key + "], value = [" + value + "], context = [" + context + "]");
+//            System.out.println("key = [" + key + "], value = [" + value + "], context = [" + context + "]");
             long upFlow = Long.parseLong(fields[1]);
             long downFlow = Long.parseLong(fields[2]);
             context.write(new FlowBean(phoneNB, upFlow, downFlow, upFlow+downFlow), NullWritable.get());
