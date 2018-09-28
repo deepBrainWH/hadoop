@@ -1,12 +1,13 @@
 package com.wangheng.hadoop.sort;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class FlowBean implements Writable, Comparable<FlowBean> {
+public class FlowBean implements WritableComparable<FlowBean> {
 
     private String phoneNumber;
     private long upFlow;
@@ -76,11 +77,13 @@ public class FlowBean implements Writable, Comparable<FlowBean> {
 
     @Override
     public String toString(){
-        return upFlow+"\t"+downFlow+"\t"+sumFlow;
+        return this.phoneNumber+"\t"+this.upFlow+"\t"+this.downFlow+"\t"+this.sumFlow;
     }
 
     @Override
     public int compareTo(FlowBean o) {
-        return sumFlow>o.getSumFlow()?-1:1;
+        long thisValue = this.sumFlow;
+        long thatValue = o.sumFlow;
+        return (thisValue > thatValue ? -1 : ( thisValue==thatValue ? 0 : 1));
     }
 }
