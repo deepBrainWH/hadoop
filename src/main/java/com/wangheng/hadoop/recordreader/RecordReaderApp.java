@@ -7,10 +7,14 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.*;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.LineReader;
 
 import java.io.IOException;
+import java.net.URI;
 
 public class RecordReaderApp {
     public static class MyRecordReader extends RecordReader<LongWritable, Text>{
@@ -52,7 +56,7 @@ public class RecordReaderApp {
         }
 
         @Override
-        public boolean nextKeyValue() throws IOException, InterruptedException {
+        public boolean nextKeyValue() throws IOException {
             if(key == null){
                 key = new LongWritable();
             }
@@ -120,7 +124,42 @@ public class RecordReaderApp {
             //setting value
             outValue.set(sum);
             context.write(outKey, outValue);
-
         }
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+        String INPUT_PATH = "hdfs://localhost:9000/user/wangheng/data";
+        String OUTPUT_PATH = "hdfs://localhost:9000/user/wangheng/output";
+        Configuration conf = new Configuration();
+        conf.set("fs.defaultFS", "hdfs://localhost:9000");
+        final FileSystem fs = FileSystem.get(URI.create(INPUT_PATH), conf, "wangheng");
+        if(fs.exists(new Path(OUTPUT_PATH)))
+            fs.delete(new Path(OUTPUT_PATH), true);
+
+        Job job = Job.getInstance(conf, "recordReader");
+
+        job.setJarByClass(RecordReaderApp.class);
+
+        job.setMapperClass(MyMapper.class);
+        job.setMapOutputKeyClass(LongWritable.class);
+        job.setMapOutputValueClass(Text.class);
+
+        //设置输入目录和数据格式化的类
+        FileInputFormat.addInputPath(job, new Path(INPUT_PATH));
+        job.setInputFormatClass(MyInputFormat.class);
+
+        //设置分区和reducer数量
+        job.setPartitionerClass(MyPartitioner.class);
+        job.setNumReduceTasks(2);
+
+        job.setReducerClass(MyReducer.class);
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(LongWritable.class);
+
+        //指定输出路径和输出的格式化类
+        FileOutputFormat.setOutputPath(job, new Path(OUTPUT_PATH));
+        job.setOutputFormatClass(TextOutputFormat.class);
+
+        System.exit(job.waitForCompletion(true)?0:1);
     }
 }
