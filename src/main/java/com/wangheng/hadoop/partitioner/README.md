@@ -42,3 +42,5 @@ To overcome poor partitioner in Hadoop MapReduce, we can create Custom partition
 Read: MapReduce DataFlow
 
 This was all on Hadoop Mapreduce Partitioners.
+
+***tutorial url:https://data-flair.training/blogs/hadoop-partitioner-tutorial/***
