@@ -103,7 +103,23 @@ public class RecordReaderApp {
         @Override
         protected void reduce(LongWritable key, Iterable<Text> values, Context context)
                 throws IOException, InterruptedException {
+            System.out.println("奇数行还是偶数行："+ key);
+            //定义求和的变量
+            long sum = 0;
+            //遍历value求和
+            for(Text val: values){
+                sum += Long.parseLong(val.toString());
+            }
 
+            //判断奇数还是偶数
+            if(key.get() == 0){
+                outKey.set("奇数之和为：");
+            }else {
+                outKey.set("偶数之和为:");
+            }
+            //setting value
+            outValue.set(sum);
+            context.write(outKey, outValue);
 
         }
     }
