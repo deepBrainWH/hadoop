@@ -17,7 +17,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.wangheng.hadoop.sort.SortMR</mainClass>
+                            <mainClass>com.wangheng.hadoop.partitioner.Partitioner</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
