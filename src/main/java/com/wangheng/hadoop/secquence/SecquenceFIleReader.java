@@ -29,6 +29,5 @@ public class SecquenceFIleReader {
             System.out.println("position: " + reader.getPosition());
         }
         IOUtils.closeStream(reader);
-
     }
 }
