@@ -16,11 +16,11 @@ import java.net.URI;
 /**
  * @Auther: wangheng
  * @Date: 2018-10-07 20:13
- * @Description:
+ * @Description: mapper join option
  */
 public class DriverApp {
-    private static final String INPUT_PATH = "";
-    private static final String OUTPUT_PATH = "";
+    private static final String INPUT_PATH = "/user/wangheng/mapJoinData";
+    private static final String OUTPUT_PATH = "/user/wangheng/mapJoinOutput";
     private static final String HDFS_URI = "hdfs://localhost:9000";
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {

@@ -17,7 +17,7 @@ public class MyMapper extends Mapper<LongWritable, Text, LongWritable, Employee>
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
         String val = value.toString();
-        String []arr = val.split("\t");
+        String []arr = val.split("\\t");
         System.out.println("arr.length = " + arr.length + ", arr[0] = " + arr[0]);
 
         if(arr.length <= 3){//dept.txt
@@ -30,7 +30,7 @@ public class MyMapper extends Mapper<LongWritable, Text, LongWritable, Employee>
             Employee e = new Employee();
             e.setEmpNo(arr[0]);
             e.setEmpName(arr[1]);
-            e.setDeptNo(arr[7]);
+            e.setDeptNo(arr[6]);
             e.setFlag(0);
             context.write(new LongWritable(Long.valueOf(e.getDeptNo())), e);
         }
