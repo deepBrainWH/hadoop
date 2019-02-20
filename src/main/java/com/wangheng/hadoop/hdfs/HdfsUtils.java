@@ -5,7 +5,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

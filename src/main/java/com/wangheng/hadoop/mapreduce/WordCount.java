@@ -1,6 +1,7 @@
 package com.wangheng.hadoop.mapreduce;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -19,7 +20,8 @@ public class WordCount {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-//        conf.set("fs.defaultFS", "hdfs://localhost:9000/");
+        conf.set("fs.defaultFS", "hdfs://localhost:9000/");
+        FileSystem fs = FileSystem.get(conf);
         Job job = Job.getInstance(conf);
         job.setJarByClass(WordCount.class);
 
@@ -34,8 +36,11 @@ public class WordCount {
         job.setMapOutputValueClass(LongWritable.class);
 
         //指定原始数据存放路径
-        FileInputFormat.setInputPaths(job, "/home/wangheng/Desktop/test_data/test_data2.txt");
-        FileOutputFormat.setOutputPath(job, new Path("/home/wangheng/Desktop/test_data/output"));
+        FileInputFormat.setInputPaths(job, "/test_data/test_data2.txt");
+        if(fs.exists(new Path("hdfs://localhost:9000/test_data/output"))){
+            fs.delete(new Path("hdfs://localhost:9000/test_data/output"), true);
+        }
+        FileOutputFormat.setOutputPath(job, new Path("/test_data/output"));
 
         job.waitForCompletion(true);
     }
