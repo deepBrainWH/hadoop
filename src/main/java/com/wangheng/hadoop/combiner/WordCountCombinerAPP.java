@@ -10,7 +10,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
 import java.io.IOException;
 import java.net.URI;
 import java.util.StringTokenizer;
@@ -63,8 +62,8 @@ public class WordCountCombinerAPP {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        FileInputFormat.addInputPath(job, new Path("/data/word"));
-        Path outPath = new Path("/data/combiner_output");
+        FileInputFormat.addInputPath(job, new Path("/test_data/test_data2.txt"));
+        Path outPath = new Path("/test_data/combiner_output");
         FileOutputFormat.setOutputPath(job, outPath);
 
         FileSystem fs = FileSystem.get(URI.create("hdfs://localhost:9000"), conf, "wangheng");
