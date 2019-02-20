@@ -11,9 +11,9 @@ MapReduce Combiner / Hadoop Combiner: MapReduce program without combiner
 
 MapReduce Combiner : MapReduce program without combiner
 
-In the above diagram, no combiner is used. Input is split into two mappers and 9 keys are generated from the mappers. Now we have (9 key/value) intermediate data, the further mapper will send directly this data to reducer and while sending data to the reducer, it consumes some network bandwidth (bandwidth means time taken to transfer data between 2 machines). It will take more time to transfer data to reducer if the size of data is big.
+In the above diagram, no combiner is used. Input is split into two mappers and 9 keys are generated from the mappers. Now we have (9 key/value) intermediate date, the further mapper will send directly this date to reducer and while sending date to the reducer, it consumes some network bandwidth (bandwidth means time taken to transfer date between 2 machines). It will take more time to transfer date to reducer if the size of date is big.
 
-Now in between mapper and reducer if we use a  hadoop combiner, then combiner shuffles intermediate data (9 key/value) before sending it to the reducer and generates 4 key/value pair as an output.
+Now in between mapper and reducer if we use a  hadoop combiner, then combiner shuffles intermediate date (9 key/value) before sending it to the reducer and generates 4 key/value pair as an output.
 
 Read: Data Locality in MapReduce
 3.2. MapReduce program with Combiner in between Mapper and Reducer
@@ -21,13 +21,13 @@ MapReduce Combiner: MapReduce program with combiner
 
 MapReduce Combiner: MapReduce program with combiner
 
-Reducer now needs to process only 4 key/value pair data which is generated from 2 combiners. Thus reducer gets executed only 4 times to produce final output, which increases the overall performance.
+Reducer now needs to process only 4 key/value pair date which is generated from 2 combiners. Thus reducer gets executed only 4 times to produce final output, which increases the overall performance.
 4. Advantages of MapReduce Combiner
 
 As we have discussed what is Hadoop MapReduce Combiner in detail, now we will discuss some advantages of Mapreduce Combiner.
 
-    Hadoop Combiner reduces the time taken for data transfer between mapper and reducer.
-    It decreases the amount of data that needed to be processed by the reducer.
+    Hadoop Combiner reduces the time taken for date transfer between mapper and reducer.
+    It decreases the amount of date that needed to be processed by the reducer.
     The Combiner improves the overall performance of the reducer.
 
 Read: Counters in MapReduce

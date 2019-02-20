@@ -15,7 +15,7 @@ Read: A Guide on Big Data Hadoop for beginners
 
 Let’s now discuss what is the need of Mapreduce Partitioner in Hadoop?
 
-MapReduce job takes an input data set and produces the list of the key-value pair which is the result of map phase in which input data is split and each task processes the split and each map, output the list of key-value pairs. Then, the output from the map phase is sent to reduce task which processes the user-defined reduce function on map outputs. But before reduce phase, partitioning of the map output take place on the basis of the key and sorted.
+MapReduce job takes an input date set and produces the list of the key-value pair which is the result of map phase in which input date is split and each task processes the split and each map, output the list of key-value pairs. Then, the output from the map phase is sent to reduce task which processes the user-defined reduce function on map outputs. But before reduce phase, partitioning of the map output take place on the basis of the key and sorted.
 
 This partitioning specifies that all the values for each key are grouped together and make sure that all the values of a single key go to the same reducer, thus allows even distribution of the map output over the reducer. Partitioner in Hadoop MapReduce redirects the mapper output to the reducer by determining which reducer is responsible for the particular key.
 
@@ -25,15 +25,15 @@ Read: Hadoop MapReduce tutorial
 The Default Hadoop partitioner in Hadoop MapReduce is Hash Partitioner which computes a hash value for the key and assigns the partition based on this result.
 5. How many Partitioners are there in Hadoop?
 
-The total number of Partitioners that run in Hadoop is equal to the number of reducers i.e. Partitioner will divide the data according to the number of reducers which is set by JobConf.setNumReduceTasks() method. Thus, the data from single partitioner is processed by a single reducer. And partitioner is created only when there are multiple reducers.
+The total number of Partitioners that run in Hadoop is equal to the number of reducers i.e. Partitioner will divide the date according to the number of reducers which is set by JobConf.setNumReduceTasks() method. Thus, the date from single partitioner is processed by a single reducer. And partitioner is created only when there are multiple reducers.
 6. Poor Partitioning in Hadoop MapReduce
 
-If in data input one key appears more than any other key. In such case, we use two mechanisms to send data to partitions.
+If in date input one key appears more than any other key. In such case, we use two mechanisms to send date to partitions.
 
     The key appearing more will be sent to one partition.
     All the other key will be sent to partitions according to their hashCode().
 
-But if hashCode() method does not uniformly distribute other keys data over partition range, then data will not be evenly sent to reducers. Poor partitioning of data means that some reducers will have more data input than other i.e. they will have more work to do than other reducers. So, the entire job will wait for one reducer to finish its extra-large share of the load.
+But if hashCode() method does not uniformly distribute other keys date over partition range, then date will not be evenly sent to reducers. Poor partitioning of date means that some reducers will have more date input than other i.e. they will have more work to do than other reducers. So, the entire job will wait for one reducer to finish its extra-large share of the load.
 
 How to overcome poor partitioning in MapReduce?
 
@@ -43,4 +43,4 @@ Read: MapReduce DataFlow
 
 This was all on Hadoop Mapreduce Partitioners.
 
-***tutorial url:https://data-flair.training/blogs/hadoop-partitioner-tutorial/***
+***tutorial url:https://date-flair.training/blogs/hadoop-partitioner-tutorial/***

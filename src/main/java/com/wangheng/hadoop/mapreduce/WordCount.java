@@ -34,8 +34,8 @@ public class WordCount {
         job.setMapOutputValueClass(LongWritable.class);
 
         //指定原始数据存放路径
-        FileInputFormat.setInputPaths(job, "/home/wangheng/word/");
-        FileOutputFormat.setOutputPath(job, new Path("/home/wangheng/output"));
+        FileInputFormat.setInputPaths(job, "/home/wangheng/Desktop/test_data/test_data2.txt");
+        FileOutputFormat.setOutputPath(job, new Path("/home/wangheng/Desktop/test_data/output"));
 
         job.waitForCompletion(true);
     }

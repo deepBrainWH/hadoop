@@ -24,8 +24,8 @@
 </property>
 
 <property>
-    <name>dfs.data.dir</name>
-    <value>/usr/local/hadoop/hdfs/data</value>
+    <name>dfs.date.dir</name>
+    <value>/usr/local/hadoop/hdfs/date</value>
     <description>datanode上数据块的物理存储位置</description>
 </property>
 

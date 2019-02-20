@@ -12,17 +12,15 @@ import java.io.IOException;
 import java.net.URI;
 
 public class SequenceFileCompression {
-    private static String HDFS_PATH = "hdfs://localhost:9000";
     private static Configuration conf = new Configuration();
     private static Path path = new Path("MySequenceFileCompress.seq");
     private static FileSystem fs;
 
     static {
         try {
+            String HDFS_PATH = "hdfs://localhost:9000";
             fs = FileSystem.get(URI.create(HDFS_PATH), conf, "wangheng");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
