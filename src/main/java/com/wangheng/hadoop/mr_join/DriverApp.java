@@ -31,7 +31,6 @@ public class DriverApp {
             fs.delete(new Path(OUTPUT_PATH), true);
 
         Job job = Job.getInstance(conf, "mapper join");
-
         //set main class jar
         job.setJarByClass(DriverApp.class);
         job.setMapperClass(MyMapper.class);
