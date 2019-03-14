@@ -16,9 +16,13 @@ public class WriteToHDFS {
             LocalFileSystem localFileSystem = FileSystem.getLocal(conf);
             FileStatus[] fileStatuses = fileSystem.listStatus(new Path("/"));
             for (FileStatus fileStatuse : fileStatuses) {
-
                 System.out.println( fileStatuse.getPath().toString() +
-                        "====" + "\033[32m" +(fileStatuse.isDirectory()?"DIR":"FILE") + "\033[0m");
+                        "\t\t\t\t\t\t\t" + "\033[32m" +(fileStatuse.isDirectory()?"DIR":"FILE") + "\033[0m");
+            }
+            FileStatus[] localFileStatus = localFileSystem.listStatus(new Path("/"));
+            for(FileStatus fileStatus: localFileStatus){
+                System.out.println( fileStatus.getPath().toString() +
+                        "\t\t\t\t\t\t\t" + "\033[32m" +(fileStatus.isDirectory()?"DIR":"FILE") + "\033[0m");
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
