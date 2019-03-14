@@ -18,7 +18,7 @@ public class WriteToHDFS {
             for (FileStatus fileStatuse : fileStatuses) {
 
                 System.out.println( fileStatuse.getPath().toString() +
-                        "\t\t\t" + "\033[32m" +(fileStatuse.isDirectory()?"DIR":"FILE") + "\033[0m");
+                        "====" + "\033[32m" +(fileStatuse.isDirectory()?"DIR":"FILE") + "\033[0m");
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

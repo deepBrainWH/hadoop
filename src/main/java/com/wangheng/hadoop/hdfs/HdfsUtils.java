@@ -20,7 +20,7 @@ public class HdfsUtils {
         Configuration conf = new Configuration();
         //this will recover the xxx-site.xml file's properties
 //        conf.set("fs.defaultFS", "hdfs://localhost:9000/");
-        fs = FileSystem.get(new URI("hdfs://172.19.33.100:9000/"), conf, "wangheng");
+        fs = FileSystem.get(new URI("hdfs://localhost:9000/"), conf, "wangheng");
     }
     /**
      * upload file
