@@ -3,3 +3,6 @@
 **/*.log
 target/
 pom.xml
+src/main/java/com/wangheng/MRHBase/
+src/main/java/com/wangheng/hbase/option/
+src/test/java/

@@ -10,9 +10,9 @@ public class WriteToHDFS {
 
     public static void main(String[] args) {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://localhost:9000/");
+        conf.set("fs.defaultFS", "hdfs://dell:9000/");
         try {
-            FileSystem fileSystem = FileSystem.get(URI.create("hdfs://localhost:9000"), conf, "wangheng");
+            FileSystem fileSystem = FileSystem.get(URI.create("hdfs://dell:9000"), conf, "wangheng");
             LocalFileSystem localFileSystem = FileSystem.getLocal(conf);
             FileStatus[] fileStatuses = fileSystem.listStatus(new Path("/"));
             for (FileStatus fileStatuse : fileStatuses) {
