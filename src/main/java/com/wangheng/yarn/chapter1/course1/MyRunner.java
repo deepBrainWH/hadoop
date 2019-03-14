@@ -22,6 +22,8 @@ public class MyRunner {
             job.setMapperClass(MyMap.class);
             job.setReducerClass(MyReduce.class);
 
+            job.setMapOutputKeyClass(Text.class);
+            job.setMapOutputValueClass(IntWritable.class);
             job.setOutputKeyClass(Text.class);
             job.setOutputValueClass(IntWritable.class);
 
