@@ -21,7 +21,7 @@ import java.net.URI;
 public class DriverApp {
     private static final String INPUT_PATH = "/user/wangheng/mapJoinData";
     private static final String OUTPUT_PATH = "/user/wangheng/mapJoinOutput";
-    private static final String HDFS_URI = "hdfs://localhost:9000";
+    private static final String HDFS_URI = "hdfs://dell:9000";
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
