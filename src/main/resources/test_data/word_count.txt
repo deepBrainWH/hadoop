@@ -1,0 +1,5 @@
+hello hadoop
+hello flink
+how are you
+i am fine thank you
+hadoop is easy

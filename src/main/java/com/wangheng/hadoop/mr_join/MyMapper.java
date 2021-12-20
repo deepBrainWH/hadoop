@@ -25,14 +25,14 @@ public class MyMapper extends Mapper<LongWritable, Text, LongWritable, Employee>
             e.setDeptNo(arr[0]);
             e.setDeptName(arr[1]);
             e.setFlag(1);
-            context.write(new LongWritable(Long.valueOf(e.getDeptNo())), e);
+            context.write(new LongWritable(Long.parseLong(e.getDeptNo())), e);
         }else {//emp.txt
             Employee e = new Employee();
             e.setEmpNo(arr[0]);
             e.setEmpName(arr[1]);
             e.setDeptNo(arr[6]);
             e.setFlag(0);
-            context.write(new LongWritable(Long.valueOf(e.getDeptNo())), e);
+            context.write(new LongWritable(Long.parseLong(e.getDeptNo())), e);
         }
     }
 }

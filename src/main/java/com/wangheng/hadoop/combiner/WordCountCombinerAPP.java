@@ -9,6 +9,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 import java.net.URI;
@@ -52,21 +53,22 @@ public class WordCountCombinerAPP {
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://localhost:9000");
+//        conf.set("fs.defaultFS", "hdfs://localhost:9000");
         Job job = Job.getInstance(conf, "word count");
         job.setJarByClass(WordCountCombinerAPP.class);
         job.setMapperClass(TokerizerMapper.class);
         job.setReducerClass(IntSumReducer.class);
+        job.setInputFormatClass(TextInputFormat.class);
 
         job.setCombinerClass(IntSumReducer.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        FileInputFormat.addInputPath(job, new Path("/test_data/test_data2.txt"));
-        Path outPath = new Path("/test_data/combiner_output");
+        FileInputFormat.addInputPath(job, new Path("/Users/wangheng/workspace/bigdata/hadoop/src/main/resources/test_data/word_count.txt"));
+        Path outPath = new Path("/Users/wangheng/workspace/bigdata/hadoop/src/main/resources/test_output/wordcount");
         FileOutputFormat.setOutputPath(job, outPath);
 
-        FileSystem fs = FileSystem.get(URI.create("hdfs://localhost:9000"), conf, "wangheng");
+        FileSystem fs = FileSystem.get( conf);
         if(fs.exists(outPath)){
             fs.delete(outPath, true);
         }

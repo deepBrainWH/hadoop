@@ -25,8 +25,9 @@ public class DriverApp {
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://localhost:9000");
-        FileSystem fs = FileSystem.get(URI.create(HDFS_URI), conf, "wangheng");
+        //conf.set("fs.defaultFS", "hdfs://localhost:9000");
+//        FileSystem fs = FileSystem.get(URI.create(HDFS_URI), conf, "wangheng");
+        FileSystem fs = FileSystem.get(conf);
         if(fs.exists(new Path(OUTPUT_PATH)))
             fs.delete(new Path(OUTPUT_PATH), true);
 

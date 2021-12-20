@@ -20,7 +20,7 @@ public class WordCount {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://localhost:9000/");
+        //conf.set("fs.defaultFS", "hdfs://localhost:9000/");
         FileSystem fs = FileSystem.get(conf);
         Job job = Job.getInstance(conf);
         job.setJarByClass(WordCount.class);

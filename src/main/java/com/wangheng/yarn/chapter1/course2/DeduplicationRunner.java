@@ -16,8 +16,8 @@ import java.net.URI;
 public class DeduplicationRunner {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration conf = new Configuration();
-        conf.set("fs.defaultFS", "hdfs://dell:9000");
-        FileSystem fs = FileSystem.get(URI.create("hdfs://dell:9000"), conf, "wangheng");
+        //conf.set("fs.defaultFS", "hdfs://dell:9000");
+        //FileSystem fs = FileSystem.get(URI.create("hdfs://dell:9000"), conf, "wangheng");
         Job job = Job.getInstance(conf, "deduplication");
 
         job.setJarByClass(DeduplicationRunner.class);
@@ -33,9 +33,9 @@ public class DeduplicationRunner {
 
         FileInputFormat.addInputPath(job, new Path("/hadoop_test_data/chapter_1/"));
         Path outputPath = new Path("/hadoop_app_out/chapter1/course2");
-        if(fs.exists(outputPath)){
-            fs.delete(outputPath, true);
-        }
+//        if(fs.exists(outputPath)){
+//            fs.delete(outputPath, true);
+//        }
         FileOutputFormat.setOutputPath(job, outputPath);
         System.exit(job.waitForCompletion(true)?0:1);
     }
